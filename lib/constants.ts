@@ -57,21 +57,6 @@ export const STATS = [
 ] as const;
 
 
-// ---------- HERO IMAGE DECK ----------
-// Nine photos supplied by Eli from Unsplash (he confirmed each one renders).
-// Served at w=900 rather than the w=600 thumbnail params so they stay sharp on
-// a retina display; every other query param is left exactly as given.
-export const DECK = [
-  { src: "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=900&q=80&auto=format&fit=crop", alt: "A developer's workspace" },
-  { src: "https://images.unsplash.com/photo-1487014679447-9f8336841d58?w=900&q=80&auto=format&fit=crop", alt: "Code on screen" },
-  { src: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=900&q=80&auto=format&fit=crop", alt: "A website being designed" },
-  { src: "https://images.unsplash.com/photo-1648134859177-66e35b61e106?w=900&q=80&auto=format&fit=crop", alt: "Interface design detail" },
-  { src: "https://images.unsplash.com/photo-1678690832324-67961a27ca92?w=900&q=80&auto=format&fit=crop", alt: "A site laid out on screen" },
-  { src: "https://images.unsplash.com/photo-1678690832871-8b9993c76aa8?w=900&q=80&auto=format&fit=crop", alt: "Layout and typography" },
-  { src: "https://images.unsplash.com/photo-1519222970733-f546218fa6d7?w=900&q=80&auto=format&fit=crop", alt: "A workspace mid-build" },
-  { src: "https://images.unsplash.com/photo-1642052502304-272cb5c31417?w=900&q=80&auto=format&fit=crop", alt: "A finished interface" },
-  { src: "https://images.unsplash.com/photo-1740477959010-c2e99bf4a5ff?w=900&q=80&auto=format&fit=crop", alt: "Design work in progress" },
-] as const;
 
 export const MARQUEE = [
   "Fitness",

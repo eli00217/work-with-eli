@@ -9,7 +9,6 @@ import { HERO, STATS, MARQUEE } from "@/lib/constants";
 import { LineReveal } from "@/components/motion/LineReveal";
 import { Counter } from "@/components/motion/Counter";
 import { Marquee } from "@/components/motion/Marquee";
-import { ImageDeck } from "@/components/motion/ImageDeck";
 
 const BASE = 0.1; // no preloader — content paints immediately
 
@@ -29,10 +28,8 @@ export default function Hero() {
       />
 
       <div className="container relative flex-1">
-        {/* Two columns: the thesis on the left, the deck of work on the right. */}
-        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
-          {/* ---------- LEFT: the thesis ---------- */}
-          <div className="lg:col-span-7">
+        <div>
+          <div className="max-w-5xl">
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -43,7 +40,7 @@ export default function Hero() {
             </motion.p>
 
             {/* Headline — deliberate three-beat break */}
-            <h1 className="mt-7 font-display text-[clamp(2.5rem,5.4vw,5rem)] leading-[0.98] tracking-[-0.035em] text-chalk">
+            <h1 className="mt-7 font-display text-mega text-chalk">
               <LineReveal delay={BASE + 0.05}>{HERO.line1}</LineReveal>
               <LineReveal delay={BASE + 0.15}>{HERO.line2}</LineReveal>
               <LineReveal delay={BASE + 0.25}>
@@ -83,15 +80,6 @@ export default function Hero() {
           </motion.div>
           </div>
 
-          {/* ---------- RIGHT: the deck ---------- */}
-          <motion.div
-            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.94 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: BASE + 0.4, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5"
-          >
-            <ImageDeck />
-          </motion.div>
         </div>
 
         {/* Counters */}
@@ -99,7 +87,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: BASE + 0.8, duration: 0.8 }}
-          className="mt-24 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-edge pt-10 sm:grid-cols-4 lg:mt-28"
+          className="mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-edge pt-10 sm:grid-cols-4 lg:mt-20"
         >
           {STATS.map((s) => (
             <div key={s.label}>

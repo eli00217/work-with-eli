@@ -2,12 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-    ],
+    // No third-party stock imagery on this site — see "The problem" section.
+    remotePatterns: [],
     formats: ["image/avif", "image/webp"],
   },
   experimental: {
