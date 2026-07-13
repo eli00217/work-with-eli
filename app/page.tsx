@@ -1,4 +1,3 @@
-import { Preloader } from "@/components/layout/Preloader";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 
@@ -16,7 +15,6 @@ import Contact from "@/components/sections/Contact"; // 9. the close
 export default function Home() {
   return (
     <>
-      <Preloader />
       <Nav />
 
       <main>

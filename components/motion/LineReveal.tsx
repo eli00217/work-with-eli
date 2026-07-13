@@ -15,6 +15,18 @@
 //
 // Now: a 1.4s failsafe force-reveals regardless of the observer, so the failure
 // mode is "visible" rather than "invisible". Desktop animation is unchanged.
+//
+// ALSO FIXED — WORD FUSION. Each line is a block element, and JSX strips the
+// whitespace between sibling elements. So two stacked lines produced:
+//
+//   <h1><span>Your website is</span><span>the first thing</span></h1>
+//   textContent -> "Your website isthe first thing"
+//
+// The words visually looked separated (they are on different lines) but had no
+// separator in the text. That broke screen readers, copy-paste, and how search
+// engines read the heading. Each line now emits a trailing space. Inside a
+// block element a trailing space collapses, so nothing moves visually — but the
+// word boundary is back in textContent.
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
@@ -42,7 +54,11 @@ export function LineReveal({
   }, []);
 
   if (reduced) {
-    return <span className={className}>{children}</span>;
+    return (
+      <span className={className}>
+        {children}{" "}
+      </span>
+    );
   }
 
   const open = inView || failsafe;
@@ -55,7 +71,7 @@ export function LineReveal({
         transition={{ duration: 0.95, delay, ease: [0.22, 1, 0.36, 1] }}
         className={`block ${className ?? ""}`}
       >
-        {children}
+        {children}{" "}
       </motion.span>
     </span>
   );

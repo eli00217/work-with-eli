@@ -46,11 +46,14 @@ export const HERO = {
 } as const;
 
 // Counters — all true, all verifiable by clicking
+// A stat is EITHER a number that counts up, OR static text. "3–5 days" is a
+// range, not a quantity — pushing it through the counter rendered "0–5 days"
+// in production, because the counter starts at 0 and appends the suffix.
 export const STATS = [
-  { value: 5, suffix: "", label: "Live builds" },
-  { value: 5, suffix: "", label: "Industries" },
-  { value: 3, suffix: "–5 days", label: "Landing page" },
-  { value: 1, suffix: "", label: "Person. Me." },
+  { kind: "count", value: 5, label: "Live builds" },
+  { kind: "count", value: 5, label: "Industries" },
+  { kind: "text", text: "3–5 days", label: "Landing page" },
+  { kind: "count", value: 1, label: "Person. Me." },
 ] as const;
 
 
@@ -211,7 +214,7 @@ export const SERVICES = [
   {
     id: "redesign",
     title: "Redesigns",
-    price: "Quoted",
+    price: "From $350",
     time: "Depends on scope",
     body: "You already have a site and it is letting you down. I rebuild it properly — same content, new foundation, dramatically faster.",
     includes: [

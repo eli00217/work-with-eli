@@ -11,7 +11,7 @@ import { Counter } from "@/components/motion/Counter";
 import { Marquee } from "@/components/motion/Marquee";
 import { ImageDeck } from "@/components/motion/ImageDeck";
 
-const BASE = 2.0; // starts after the preloader lifts
+const BASE = 0.1; // no preloader — content paints immediately
 
 export default function Hero() {
   const reduced = useReducedMotion();
@@ -104,7 +104,9 @@ export default function Hero() {
           {STATS.map((s) => (
             <div key={s.label}>
               <dd className="font-display text-4xl text-chalk sm:text-5xl">
-                <Counter to={s.value} suffix={s.suffix} />
+                {/* A range like "3–5 days" is text, not a quantity. It must not
+                    pass through Counter — doing so rendered "0–5 days" live. */}
+                {s.kind === "count" ? <Counter to={s.value} /> : s.text}
               </dd>
               <dt className="mt-2 font-mono text-[10px] uppercase tracking-ultra text-ash">
                 {s.label}

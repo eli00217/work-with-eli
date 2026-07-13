@@ -19,7 +19,9 @@ export function Footer() {
       {/* Marquee strip */}
       <div className="border-b border-white/10 py-6">
         <Marquee slow>
-          {[...MARQUEE, ...MARQUEE].map((item, i) => (
+          {/* Marquee duplicates its children internally for the seamless loop,
+              so pass the list ONCE — passing it twice rendered four repeats. */}
+          {MARQUEE.map((item, i) => (
             <span
               key={i}
               className="flex items-center whitespace-nowrap px-6 font-display text-lg text-slate/60/60 sm:text-xl"

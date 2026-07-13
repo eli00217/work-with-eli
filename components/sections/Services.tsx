@@ -27,7 +27,7 @@ export default function Services() {
 
         <Stagger className="mt-16 grid gap-6 lg:grid-cols-3" gap={0.1}>
           {SERVICES.map((s) => (
-            <StaggerItem key={s.id}>
+            <StaggerItem key={s.id} className="h-full">
               <div
                 className={cn(
                   "card lift group flex h-full flex-col p-8 lg:p-10",
