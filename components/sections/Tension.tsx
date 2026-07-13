@@ -4,12 +4,14 @@
 
 import { TENSION } from "@/lib/constants";
 import { Reveal } from "@/components/motion/Reveal";
+import { DotField } from "@/components/ambient/DotField";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { LineReveal } from "@/components/motion/LineReveal";
 
 export default function Tension() {
   return (
-    <section className="on-dark section">
+    <section className="on-dark section relative overflow-hidden">
+      <DotField tone="dark" />
       <div className="container">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">

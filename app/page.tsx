@@ -1,4 +1,5 @@
 import { Nav } from "@/components/layout/Nav";
+import { PointerLayer } from "@/components/ambient/PointerLayer";
 import { Footer } from "@/components/layout/Footer";
 
 // The narrative arc — each section sets up the next.
@@ -15,9 +16,13 @@ import Contact from "@/components/sections/Contact"; // 9. the close
 export default function Home() {
   return (
     <>
+      <PointerLayer />
       <Nav />
 
-      <main>
+      {/* relative z-10: the PointerLayer is fixed at z-0, and a positioned
+          element paints above non-positioned siblings. Without this the glow
+          would render OVER the text instead of behind it. */}
+      <main className="relative z-10">
         <Hero />
         <Tension />
         <Work />
@@ -29,7 +34,9 @@ export default function Home() {
         <Contact />
       </main>
 
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </>
   );
 }

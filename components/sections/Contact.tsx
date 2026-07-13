@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { CONTACT, SITE } from "@/lib/constants";
 import { Reveal } from "@/components/motion/Reveal";
+import { DotField } from "@/components/ambient/DotField";
 import { LineReveal } from "@/components/motion/LineReveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 
@@ -62,6 +63,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section relative overflow-hidden">
+      <DotField />
       {/* Molten wash — the only place the second accent runs hot */}
       <div
         aria-hidden

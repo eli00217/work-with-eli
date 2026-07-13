@@ -128,3 +128,35 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------- AURORA DRIFT ----------
+   Three variants, applied round-robin, each blob on its own duration (23-41s)
+   and a negative delay so they start mid-cycle. Nothing lines up, so the field
+   never shows a visible repeat rhythm.
+   transform + opacity ONLY — stays on the compositor, no layout, no paint. */
+@keyframes aurora-drift-0 {
+  0%,100% { transform: translate3d(0,0,0) scale(1); }
+  33%     { transform: translate3d(6%, -8%, 0) scale(1.12); }
+  66%     { transform: translate3d(-5%, 5%, 0) scale(0.94); }
+}
+@keyframes aurora-drift-1 {
+  0%,100% { transform: translate3d(0,0,0) scale(1.04); }
+  40%     { transform: translate3d(-7%, 6%, 0) scale(0.9); }
+  75%     { transform: translate3d(4%, 7%, 0) scale(1.15); }
+}
+@keyframes aurora-drift-2 {
+  0%,100% { transform: translate3d(0,0,0) scale(0.96); }
+  25%     { transform: translate3d(5%, 6%, 0) scale(1.1); }
+  60%     { transform: translate3d(7%, -5%, 0) scale(1.02); }
+}
+
+/* Click / tap ripple */
+@keyframes ripple-out {
+  from { transform: translate3d(-50%,-50%,0) scale(0.2); opacity: 0.5; }
+  to   { transform: translate3d(-50%,-50%,0) scale(1);   opacity: 0; }
+}
+
+/* Nothing moves if the visitor asked for no motion. */
+@media (prefers-reduced-motion: reduce) {
+  [class*="aurora"], [data-ambient] { animation: none !important; }
+}

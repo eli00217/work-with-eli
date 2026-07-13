@@ -60,8 +60,15 @@ export default function Stack() {
           className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-edge bg-edge sm:grid-cols-3 lg:grid-cols-4"
           gap={0.04}
         >
-          {STACK.map((tool) => (
-            <StaggerItem key={tool.name}>
+          {/* 11 tools is prime — no column count divides it evenly, so the last
+              row always left an orphan gap. Giving the final tile col-span-2
+              makes 12 effective cells, which fills perfectly at 2, 3 AND 4
+              columns. No gap at any breakpoint. */}
+          {STACK.map((tool, i) => (
+            <StaggerItem
+              key={tool.name}
+              className={i === STACK.length - 1 ? "col-span-2" : undefined}
+            >
               <div className="group flex h-full items-center gap-4 bg-coal p-6 transition-colors duration-500 hover:bg-slate">
                 <StackIcon slug={tool.slug} color={tool.color} name={tool.name} />
                 <div className="min-w-0">

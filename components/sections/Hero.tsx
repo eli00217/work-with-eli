@@ -9,6 +9,7 @@ import { HERO, STATS, MARQUEE } from "@/lib/constants";
 import { LineReveal } from "@/components/motion/LineReveal";
 import { Counter } from "@/components/motion/Counter";
 import { Marquee } from "@/components/motion/Marquee";
+import { Aurora } from "@/components/ambient/Aurora";
 
 const BASE = 0.1; // no preloader — content paints immediately
 
@@ -17,15 +18,8 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative flex min-h-[100svh] flex-col justify-between pt-28 sm:pt-32 lg:pt-36">
-      {/* Lime bloom, top-left */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-40 -top-40 size-[520px] rounded-full bg-lime/[0.10] blur-[120px]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-32 top-1/3 size-[420px] rounded-full bg-molten/[0.07] blur-[120px]"
-      />
+      {/* Ambient aurora — drifting mesh gradient, pointer-reactive */}
+      <Aurora />
 
       <div className="container relative flex-1">
         <div>
