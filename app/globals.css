@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: theme("colors.edge");
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    color-scheme: dark;
+  }
+
+  body {
+    background: theme("colors.void");
+    color: theme("colors.chalk");
+    font-family: var(--font-sans), system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: theme("colors.lime.DEFAULT");
+    color: theme("colors.chalk");
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 500;
+  }
+
+  ::-webkit-scrollbar { width: 9px; }
+  ::-webkit-scrollbar-track { background: theme("colors.void"); }
+  ::-webkit-scrollbar-thumb {
+    background: theme("colors.edge");
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: theme("colors.lime.deep"); }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10;
+  }
+
+  /* Generous, consistent vertical rhythm */
+  .section {
+    @apply relative py-24 sm:py-32 lg:py-40;
+  }
+
+  /* Small caps label above every section heading */
+  .kicker {
+    @apply inline-flex items-center gap-2.5 font-mono text-[10.5px] uppercase tracking-ultra text-ash;
+  }
+  .kicker::before {
+    content: "";
+    @apply block h-px w-8 bg-lime;
+  }
+
+  .rule {
+    @apply h-px w-full bg-edge;
+  }
+
+  /* Cards */
+  .card {
+    @apply relative overflow-hidden rounded-2xl border border-edge bg-coal transition-colors duration-500;
+  }
+  .card:hover {
+    @apply border-ash/40;
+  }
+
+  /* Focus visibility — keyboard users */
+
+  /* ---------- DARK SECTIONS ----------
+     Two sections (Tension, Footer) invert to rich navy #1A2530 so the page has
+     rhythm instead of an unbroken wall of cream. On this surface the accent
+     switches to bright mint (6.24:1) — deep teal would only manage 4.15:1. */
+  .on-dark {
+    @apply bg-deep text-slate;
+  }
+  .on-dark .kicker {
+    @apply text-slate/55;
+  }
+  .on-dark .kicker::before {
+    @apply bg-lime-soft;
+  }
+  .on-dark .rule {
+    @apply bg-white/10;
+  }
+
+  .focusable {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-void;
+  }
+
+  /* Grain overlay */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .lift {
+    @apply transition-transform duration-500 will-change-transform;
+  }
+  .lift:hover {
+    transform: translateY(-6px);
+  }
+}
+
+/* Accessibility: honour reduced-motion everywhere, including marquees */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
