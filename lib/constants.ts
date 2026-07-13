@@ -189,6 +189,8 @@ export const SERVICES = [
       "Live on your domain",
     ],
     featured: false,
+    booking:
+      "https://calendly.com/projects-workwithelico/30min?a1=Landing%20Page&utm_source=website&utm_campaign=landing-page",
   },
   {
     id: "multipage",
@@ -203,6 +205,8 @@ export const SERVICES = [
       "Everything a landing page gets",
     ],
     featured: true,
+    booking:
+      "https://calendly.com/projects-workwithelico/30min?a1=Multi-Page%20Site&utm_source=website&utm_campaign=multi-page",
   },
   {
     id: "redesign",
@@ -217,6 +221,8 @@ export const SERVICES = [
       "You keep the code",
     ],
     featured: false,
+    booking:
+      "https://calendly.com/projects-workwithelico/30min?a1=Redesign&utm_source=website&utm_campaign=redesign",
   },
 ] as const;
 

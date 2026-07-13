@@ -67,7 +67,7 @@ export default function Services() {
                 </ul>
 
                 <a
-                  href={SITE.calendly}
+                  href={s.booking}
                   target="_blank"
                   rel="noreferrer"
                   className="focusable mt-auto inline-flex items-center gap-2 pt-8 font-mono text-[11px] uppercase tracking-[0.16em] text-lime transition-colors duration-300 hover:text-lime-deep"
